@@ -1,2 +1,1 @@
-"# wardana-pelatihan" 
 "# pelatihan-wardana" 
