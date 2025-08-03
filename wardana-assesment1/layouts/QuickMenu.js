@@ -120,7 +120,7 @@ const QuickMenu = () => {
                     <Dropdown.Item >
                         <i className="fe fe-settings me-2"></i> Account Settings
                     </Dropdown.Item>
-                    <Dropdown.Item>
+                    <Dropdown.Item href='/api/logout'>
                         <i className="fe fe-power me-2"></i>Sign Out
                     </Dropdown.Item>
                 </Dropdown.Menu>
