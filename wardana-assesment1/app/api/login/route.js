@@ -38,6 +38,7 @@ export async function POST(request) {
     if (password!=user.password) {
       return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
     }
+    posts={ access_token: null };
   }
   
   const user_ = { id: 1, username };
