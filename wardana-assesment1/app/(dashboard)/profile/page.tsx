@@ -19,21 +19,21 @@ function Page() {
         <div className="row">
             <div className="col-md-6">
                 {Object.entries(data.data).map(([key, value]) => (
-                    <div className="row">
+                    <div key={key} className="row">
                     <div className="col-md-3">
-                    <label class="form-label">{key}</label>
+                    <label className="form-label">{key}</label>
                     </div>
                     <div className="col-md-1">
-                    <label class="form-label">:</label>
+                    <label className="form-label">:</label>
                     </div>
                     <div className="col-md-8">
-                    <label class="form-label">{value}</label>
+                    <label className="form-label">{value}</label>
                     </div>
                     </div>
                 ))}
             </div>
             <div className="col-md-6">
-                <img src="https://i.imgur.com/LDOO4Qs.jpg" class="img-thumbnail" alt="..."></img>
+                <img src="https://i.imgur.com/LDOO4Qs.jpg" className="img-thumbnail" alt="..."></img>
             </div>
         </div>
     </div>
