@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 function MyComponent() {
   const [data, setData] = useState(null);
@@ -32,7 +33,7 @@ function MyComponent() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
+  const keyfilt = 'avatar';
   return (
     <div className="container" style={{padding: 10 + 'px'}}>
         <div className="row">
@@ -57,7 +58,11 @@ function MyComponent() {
                 ))}
             </div>
             <div className="col-md-6">
-                <img src="https://i.imgur.com/LDOO4Qs.jpg" className="img-thumbnail" alt="..."></img>
+              {Object.entries(data.data).map(([key, value]) =>
+                key === keyfilt ? (
+                  <img key={key} src={value} className="img-thumbnail"/>
+                ) : null
+              )}
             </div>
         </div>
     </div>
