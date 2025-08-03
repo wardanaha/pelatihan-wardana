@@ -39,7 +39,18 @@ export const DashboardMenu = [
 			{ id: uuid(), link: '/assesmentpage2', name: 'Tentang TMA'},
 		],
 		link: '/'
-	}/*
+	},
+	{
+		id: uuid(),
+		title: 'Test lvl 2',
+		icon: 'layers',
+		children: [
+			{ id: uuid(), link: '/profile', name: 'User Profile' },
+			{ id: uuid(), link: '/table', name: 'Table'},
+		],
+		link: '/'
+	},
+	/*
 	{
 		id: uuid(),
 		title: 'LAYOUTS & PAGES',
