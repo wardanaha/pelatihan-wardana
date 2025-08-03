@@ -12,7 +12,7 @@ export function middleware(req) {
 
   const token = req.cookies.get('token')?.value;
   const token_api = req.cookies.get('token_api')?.value;
-  console.log(token_api);
+  // console.log(token_api);
   
   if (!token) {
     return NextResponse.redirect(new URL('/authentication/sign-in', req.url));
@@ -24,12 +24,10 @@ export function middleware(req) {
     jwtVerify(token, secret);
     return NextResponse.next();
   } catch (err) {
-    console.log('stage2')
-    console.log(err)
     return NextResponse.redirect(new URL('/authentication/sign-in', req.url));
   }
 }
 
 export const config = {
-  matcher: ['/home/:path*'], // protect everything under /dashboard
+  matcher: ['/home/:path*','/assesmentpage1/:path*','/assesmentpage2/:path*','/profile/:path*','/table/:path*'], // protect everything under /dashboard
 };

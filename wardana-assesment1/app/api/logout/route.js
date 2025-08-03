@@ -3,7 +3,9 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 export async function GET() { // Or POST if preferred
-  cookies().delete('token');
+  const cookieStore = await cookies(); // Await the cookies() function
+  cookieStore.delete('token');
+  cookieStore.delete('token_api');
   redirect('/home');
 }
 

@@ -1,10 +1,15 @@
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 
 export async function GET() {
+    const cookieStore = await cookies();
+    const token_api = cookieStore.get('token_api')?.value;
+    
+    console.log(token_api);
     const res = await fetch('https://api.escuelajs.co/api/v1/auth/profile',{
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTc1NDA0NDk1MiwiZXhwIjoxNzU1NzcyOTUyfQ.we_IHSiMqIutEonqEVJJGkwB2wHlC_E5HwJNBKOhBa8'
+            'Authorization': 'Bearer '+token_api
         }
         }
     );

@@ -1,14 +1,38 @@
-async function getData() {
-  const res = await fetch('http://localhost:3000/api/platzi/getprofile');
-  // Handle errors if the API call fails
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return res.json();
-}
+"use client"
+import React, { useState, useEffect } from 'react';
 
-  const data = await getData();
-function Page() {
+function MyComponent() {
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/platzi/getprofile'); // Replace with your API endpoint
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array means this effect runs once on mount
+
+  if (isLoading) {
+    return <div>Loading data...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <div className="container" style={{padding: 10 + 'px'}}>
         <div className="row">
@@ -40,4 +64,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default MyComponent;
